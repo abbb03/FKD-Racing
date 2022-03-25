@@ -58,7 +58,7 @@ void Game::initEnemySystem()
 
 void Game::initEnemies()
 {
-    m_enemySystem->createEnemies(2);
+    m_enemySystem->createEnemies();
 }
 
 void Game::initScoreSystem()
