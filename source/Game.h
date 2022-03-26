@@ -22,7 +22,6 @@ private:
     void initVariables();
     void initCar();
     void initEnemySystem();
-    void initEnemies();
     void initScoreSystem();
     void initWindow();
     void update(float dt);

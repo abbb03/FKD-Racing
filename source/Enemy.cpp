@@ -1,18 +1,19 @@
 #include <stdlib.h>
 
 #include "Enemy.h"
+#include "Constants.h"
 
 Enemy::Enemy()
 {
     loadTexture();
-    initVariables();
+    initPosition();
     setSprite();
 }
 
-Enemy::Enemy(int xPosition)
+Enemy::Enemy(int xPosition, int yPosition)
 {
     loadTexture();
-    initVariables(xPosition);
+    setPosition(xPosition, yPosition);
     setSprite();
 }
 
@@ -21,16 +22,16 @@ void Enemy::loadTexture()
     m_Texture.loadFromFile("images/car.png");
 }
 
-void Enemy::initVariables()
+void Enemy::initPosition()
 {
     m_Position.x = 0;
     m_Position.y = 0;
 }
 
-void Enemy::initVariables(int xPosition)
+void Enemy::setPosition(int xPosition, int yPosition)
 {
     m_Position.x = xPosition;
-    m_Position.y = 0;
+    m_Position.y = yPosition;
 }
 
 void Enemy::setSprite()
@@ -45,6 +46,6 @@ sf::Sprite Enemy::getSprite()
 
 void Enemy::update(float dt)
 {
-    m_Position.y += 0.2 * dt;
+    m_Position.y += 0.1 * dt;
     m_Sprite.setPosition(m_Position);
 }

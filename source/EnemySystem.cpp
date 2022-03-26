@@ -14,16 +14,16 @@ EnemySystem::~EnemySystem()
 
 void EnemySystem::update(float dt)
 {
-    // enemyRefresh();
+    enemySpawner();
     updateEnemies(dt);
 }
 
-void EnemySystem::enemyRefresh()
+void EnemySystem::enemySpawner()
 {
-    if (clock1.getElapsedTime().asSeconds() > 1)
+    if (m_spawnClock.getElapsedTime().asSeconds() > 0.5)
     {
-        createEnemies();
-        clock1.restart();
+        createEnemy();
+        m_spawnClock.restart();
     }
 }
 
@@ -35,10 +35,7 @@ void EnemySystem::updateEnemies(float dt)
         if (!enemyExists(m_enemy))
         {
             m_enemy = deleteEnemy(m_enemy);
-            enemyRefresh();
-            printf("%ld", m_enemies.size());
         }
-
         else
         {
             m_enemy++;
@@ -46,21 +43,22 @@ void EnemySystem::updateEnemies(float dt)
     }
 }
 
-void EnemySystem::createEnemies()
+void EnemySystem::createEnemy()
 {
-    int randomY = rand() % ((WINDOW_WIDTH / STEP));
-    m_enemies.push_back(new Enemy(randomY * STEP));
+    int random = rand() % ((WINDOW_WIDTH / STEP));
+    Enemy* newEnemy = new Enemy(random * STEP, ~STEP);
+    m_enemies.push_back(newEnemy);
 }
 
 bool EnemySystem::enemyExists(std::list<Enemy*>::iterator m_enemy)
 {
-    return ((*m_enemy)->getSprite().getPosition().y < WINDOW_HEIGHT);
+    return ((*m_enemy)->getSprite().getPosition().y) < WINDOW_HEIGHT;
 }
 
 std::list<Enemy*>::iterator EnemySystem::deleteEnemy(std::list<Enemy*>::iterator m_enemy)
 {
-    m_enemy = m_enemies.erase(m_enemy);
     delete *m_enemy;
+    m_enemy = m_enemies.erase(m_enemy);
     return m_enemy;
 }
 

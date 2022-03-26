@@ -12,13 +12,13 @@ private:
     sf::Vector2f m_Position;
 
     void loadTexture();
-    void initVariables();
-    void initVariables(int xPosition);
+    void initPosition();
+    void setPosition(int xPosition, int yPosition);
     void setSprite();
 
 public:
     Enemy();
-    Enemy(int xPosition);
+    Enemy(int xPosition, int yPosition);
 
     sf::Sprite getSprite();
     void update(float dt);

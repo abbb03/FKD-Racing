@@ -4,6 +4,7 @@
 
 ScoreSystem::ScoreSystem()
 {
+    initVariables();
     initText();
 }
 
@@ -19,8 +20,7 @@ void ScoreSystem::initText()
     {
         printf("Font load error");
     }
-
-    scoreText.setString("Score: 0");
+    
     scoreText.setFont(font);
     scoreText.setCharacterSize(32);
     scoreText.setFillColor(sf::Color::Red);

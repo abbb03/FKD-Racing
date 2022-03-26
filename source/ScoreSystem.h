@@ -10,12 +10,12 @@ private:
     sf::Font font;
     int score;
     float timer;
+    void initText();
+    void initVariables();
     
 public:
     ScoreSystem();
 
-    void initVariables();
-    void initText();
     void draw(sf::RenderWindow* window);
     void scoreUpdate(float dt);
 };

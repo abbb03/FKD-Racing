@@ -7,7 +7,6 @@ Game::Game()
     initVariables();
     initCar();
     initEnemySystem();
-    initEnemies();
     initScoreSystem();
     initWindow();
 }
@@ -26,6 +25,9 @@ void Game::start()
         clock.restart();
         dt /= m_gameSpeed;
 
+        draw();
+        update(dt);
+
         while (this->m_window->pollEvent(m_event))
         {
             if (m_event.type == sf::Event::Closed)
@@ -33,9 +35,6 @@ void Game::start()
                 this->m_window->close();
             }
         }
-
-        update(dt);
-        draw();
     }
 }
 
@@ -52,19 +51,12 @@ void Game::initCar()
 
 void Game::initEnemySystem()
 {
-    srand(time(0));
     m_enemySystem = new EnemySystem();
-}
-
-void Game::initEnemies()
-{
-    m_enemySystem->createEnemies();
 }
 
 void Game::initScoreSystem()
 {
     m_scoreSystem = new ScoreSystem();
-    m_scoreSystem->initText();
 }
 
 void Game::initWindow()
@@ -73,5 +65,4 @@ void Game::initWindow()
     m_videoMode.width = WINDOW_WIDTH;
 
     this->m_window = new sf::RenderWindow(m_videoMode, "test", sf::Style::Close);
-    this->m_window->setFramerateLimit(FPS);
 }

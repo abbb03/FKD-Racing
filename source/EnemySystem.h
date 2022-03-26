@@ -12,19 +12,20 @@ class EnemySystem
 private:
     std::list<Enemy*> m_enemies;
     std::list<Enemy*>::iterator m_enemy;
-    sf::Clock clock1;
+    sf::Clock m_spawnClock;
+
+    void enemySpawner();
+    void updateEnemies(float dt);
+    void createEnemy();
+    bool enemyExists(std::list<Enemy*>::iterator m_enemy);
+    std::list<Enemy*>::iterator deleteEnemy(std::list<Enemy*>::iterator m_enemy);
 
 public:
     EnemySystem();
     ~EnemySystem();
 
-    void createEnemies();
-    bool enemyExists(std::list<Enemy*>::iterator m_enemy);
-    std::list<Enemy*>::iterator deleteEnemy(std::list<Enemy*>::iterator m_enemy);
     void update(float dt);
     void draw(sf::RenderWindow* window);
-    void enemyRefresh();
-    void updateEnemies(float dt);
 };
 
 #endif
