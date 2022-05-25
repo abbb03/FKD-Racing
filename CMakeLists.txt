@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 
-set(PROJECT_NAME test)
+set(PROJECT_NAME FKD_Racing)
 project(${PROJECT_NAME})
 
 set(CMAKE_CXX_STANDARD 17)
@@ -25,4 +25,4 @@ add_executable(${PROJECT_NAME}
   source/ScoreSystem.cpp
 )
 
-target_link_libraries(test sfml-graphics)
+target_link_libraries(${PROJECT_NAME} sfml-graphics)

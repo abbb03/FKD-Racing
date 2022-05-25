@@ -19,11 +19,11 @@ private:
     void createEnemy();
     bool enemyExists(std::list<Enemy*>::iterator m_enemy);
     std::list<Enemy*>::iterator deleteEnemy(std::list<Enemy*>::iterator m_enemy);
-
 public:
     EnemySystem();
     ~EnemySystem();
 
+    bool checkCollision(sf::Sprite sprite);
     void update(float dt);
     void draw(sf::RenderWindow* window);
 };

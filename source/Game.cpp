@@ -66,3 +66,4 @@ void Game::initWindow()
 
     this->m_window = new sf::RenderWindow(m_videoMode, "test", sf::Style::Close);
 }
+

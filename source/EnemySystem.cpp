@@ -27,6 +27,14 @@ void EnemySystem::enemySpawner()
     }
 }
 
+bool EnemySystem::checkCollision(sf::Sprite sprite)
+{
+    for (m_enemy = m_enemies.begin(); m_enemy != m_enemies.end(); m_enemy++)
+    {
+        return sprite.getGlobalBounds().intersects((*m_enemy)->getSprite().getGlobalBounds());
+    }
+}
+
 void EnemySystem::updateEnemies(float dt)
 {
     for (m_enemy = m_enemies.begin(); m_enemy != m_enemies.end();)
@@ -69,3 +77,4 @@ void EnemySystem::draw(sf::RenderWindow* window)
         window->draw((*m_enemy)->getSprite());
     }
 }
+
