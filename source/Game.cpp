@@ -5,10 +5,8 @@
 Game::Game()
 {
     initVariables();
-    initCar();
-    initEnemySystem();
-    initScoreSystem();
     initWindow();
+    initMenu();
 }
 
 Game::~Game()
@@ -25,8 +23,8 @@ void Game::start()
         clock.restart();
         dt /= m_gameSpeed;
 
-        draw();
         update(dt);
+        draw();
 
         while (this->m_window->pollEvent(m_event))
         {
@@ -38,10 +36,26 @@ void Game::start()
     }
 }
 
+void Game::initWindow()
+{
+    m_videoMode.height = WINDOW_HEIGHT;
+    m_videoMode.width = WINDOW_WIDTH;
+
+    this->m_window = new sf::RenderWindow(m_videoMode, "test", sf::Style::Close);
+}
+
 void Game::initVariables()
 {
     this->m_window = nullptr;
     m_gameSpeed = GAME_SPEED;
+    m_gameState = MENU;
+}
+
+void Game::initGameState()
+{
+    initCar();
+    initEnemySystem();
+    initScoreSystem();
 }
 
 void Game::initCar()
@@ -59,11 +73,7 @@ void Game::initScoreSystem()
     m_scoreSystem = new ScoreSystem();
 }
 
-void Game::initWindow()
+void Game::initMenu()
 {
-    m_videoMode.height = WINDOW_HEIGHT;
-    m_videoMode.width = WINDOW_WIDTH;
-
-    this->m_window = new sf::RenderWindow(m_videoMode, "test", sf::Style::Close);
+    m_menuSystem = new MenuSystem();
 }
-
