@@ -25,6 +25,7 @@ add_executable(${PROJECT_NAME}
   source/ScoreSystem.cpp
   source/MenuSystem.h
   source/MenuSystem.cpp
+  source/Choice.h
 )
 
 target_link_libraries(${PROJECT_NAME} sfml-graphics)

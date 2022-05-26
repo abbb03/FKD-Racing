@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "Choice.h"
 
 void Game::update(float dt)
 {
@@ -37,7 +38,19 @@ void Game::updateMenuState(float dt)
     
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
     {
-        initGameState();
-        m_gameState = GAME;
+        switch (m_menuSystem->choice)
+        {
+            case Choice::START:
+            {
+                initGameState();
+                m_gameState = GAME;
+                break;
+            }
+            case Choice::QUIT:
+            {
+                m_window->close();
+                break;
+            }
+        }
     }
 }
