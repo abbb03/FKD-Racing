@@ -33,7 +33,8 @@ void Game::updateGameState(float dt)
 
 void Game::updateMenuState(float dt)
 {
-    m_menuSystem->update(dt);  
+    m_menuSystem->update(dt);
+    
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
     {
         initGameState();

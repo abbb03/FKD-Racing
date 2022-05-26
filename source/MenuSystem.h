@@ -6,6 +6,7 @@
 class MenuSystem
 {
 private:
+    float timer;
     sf::Text startText;
     sf::Text quitText;
     sf::Font font;
@@ -14,8 +15,8 @@ private:
     enum Choice { START, QUIT };
 public:
     MenuSystem();
-    
-    
+     
+    Choice choice;
 
     void draw(sf::RenderWindow* window);
     void update(float dt);
