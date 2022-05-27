@@ -42,7 +42,7 @@ void MenuSystem::update(float dt)
 {
     timer += dt;
 
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::F) && timer > 350.f)
+    if ((sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::S)) && timer > 250.f)
     {
         switch (choice)
         {
